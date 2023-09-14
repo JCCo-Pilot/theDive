@@ -19,6 +19,8 @@ public class theDive implements ActionListener{
         dive.addActionListener(this);
         dive.setFont(myFont);
         surface.setFont(myFont);
+        panel.add(dive);
+        panel.add(surface);
         frame = new JFrame("Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1500,500);
@@ -34,6 +36,14 @@ public class theDive implements ActionListener{
                 playerPos+=diceRoll;
             }
         }
+        if (e.getSource()==surface){
+            int diceRoll = (int)Math.random()*3+1;
+            diceRoll += (int)Math.random()*3+1;
+            if (playerPos-diceRoll>-1){
+                playerPos-=diceRoll;
+            }
+        }
         panel.refresh(playerPos);
+        panel.repaint();
     }
 }
